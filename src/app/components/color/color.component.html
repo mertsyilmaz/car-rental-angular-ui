@@ -1,1 +1,14 @@
-<p>color works!</p>
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Color Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let color of colors">
+        <th scope="row">{{color.id}}</th>
+        <td>{{color.name}}</td>
+      </tr>
+    </tbody>
+  </table>
