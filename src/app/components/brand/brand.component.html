@@ -2,5 +2,12 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 <ul class="list-group" *ngIf="dataLoaded==true">
-  <li class="list-group-item" *ngFor="let brand of brands">{{ brand.name }}</li>
+  <li class="list-group-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+    true}"  routerLink="cars">All Brands</li>
+  <li 
+  class="list-group-item" 
+  routerLinkActive="active"
+  routerLink="/cars/brand/{{brand.id}}"
+  *ngFor="let brand of brands" 
+  (click)="setCurrentBrand(brand)">{{ brand.name }}</li>
 </ul>

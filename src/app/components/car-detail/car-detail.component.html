@@ -1,0 +1,31 @@
+
+<div *ngIf="car" class="card" >
+    <div id="carouselExampleControls" class="carousel slide" style="max-height:500px; height: 500px;" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div *ngFor="let photo of photos; let index = index" class="carousel-item" [class.active]="index ==0">
+            <img [src]="photo.url" class="d-block w-100"style="max-height: 500px; height: 500px;" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    <div class="card-body">
+      <h5 class="card-title">{{car.carName}}</h5>
+      <p class="card-text">{{car.description}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Brand : {{car.brandName}}</li>
+      <li class="list-group-item">Color : {{car.colorName}}</li>
+      <li class="list-group-item">Model Year : {{car.modelYear}}</li>
+      <li class="list-group-item">Daily Price : {{car.dailyPrice}}</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Rent Car</a>
+    </div>
+  </div>

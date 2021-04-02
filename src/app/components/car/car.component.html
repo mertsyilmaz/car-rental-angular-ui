@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let carDetail of carsDetail">
+      <tr routerLink="/car/{{carDetail.carId}}" *ngFor="let carDetail of carsDetail">
         <th scope="row">{{carDetail.carId}}</th>
         <td>{{carDetail.carName}}</td>
         <td>{{carDetail.brandName}}</td>
