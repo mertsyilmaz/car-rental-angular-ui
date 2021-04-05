@@ -1,0 +1,72 @@
+<div *ngIf="car" class="card mb-3">
+    <div class="card-header">Car Info</div>
+  <div class="row g-0">
+    <div
+      id="carouselExampleControls"
+      class="carousel slide col-md-4"
+      style="max-height: 2 * 0px; height: 200px"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div
+          *ngFor="let photo of photos; let index = index"
+          class="carousel-item"
+          [class.active]="index == 0"
+        >
+          <img
+            [src]="photo.url"
+            class="d-block w-100"
+            style="max-height: 200px; height: 200px"
+            alt="..."
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ car.brandName }} {{ car.carName }}
+          <small class="text-muted"
+            >{{ car.colorName }} {{ car.modelYear }}</small
+          >
+        </h5>
+        <p class="card-text">{{ car.description }}</p>
+        <p class="card-text">
+          <small class="text-muted">{{ car.dailyPrice }}</small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Start Date</label>
+          <input [(ngModel)]="startDate" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">End Date</label>
+          <input [(ngModel)]="endDate" type="date" class="form-control" id="exampleInputPassword1">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="rentCar(car)">Rent</button>
+</div>

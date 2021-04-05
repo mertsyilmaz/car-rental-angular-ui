@@ -1,3 +1,25 @@
+<div class="input-group mb-3">
+  <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search value.." aria-label="Recipient's username" aria-describedby="button-addon2">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+</div>
+<div class="row">
+  <div class="col-4">
+    <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedBrand">
+      <option value="" >All brand</option>
+      <option *ngFor="let brand of brands" [value]="brand.id" >{{brand.name}}</option>
+    </select>
+  </div>
+  <div class="col-4">
+    <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedColor">
+      <option value="" >All color</option>
+      <option *ngFor="let color of colors" [value]="color.id" >{{color.name}}</option>
+    </select>
+  </div>
+  <div class="col-4">
+    <button class="btn btn-primary right" (click)="getCarsByFilter()">filter</button>
+  </div>
+</div>
+
 <table class="table table-striped table-hover">
     <thead>
       <tr>
@@ -9,7 +31,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr routerLink="/car/{{carDetail.carId}}" *ngFor="let carDetail of carsDetail">
+      <tr routerLink="/car/{{carDetail.carId}}" *ngFor="let carDetail of carsDetail | carFilter:filterText">
         <th scope="row">{{carDetail.carId}}</th>
         <td>{{carDetail.carName}}</td>
         <td>{{carDetail.brandName}}</td>

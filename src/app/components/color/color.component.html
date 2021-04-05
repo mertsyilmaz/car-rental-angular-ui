@@ -1,10 +1,18 @@
-<ul class="list-group" >
-  <li class="list-group-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-    true}"  routerLink="cars">All Colors</li>
-  <li 
-  class="list-group-item" 
-  routerLinkActive="active"
-  routerLink="/cars/color/{{color.id}}"
-  *ngFor="let color of colors" 
-  (click)="setCurrentColor(color)">{{ color.name }}</li>
-</ul>
+<div class="input-group mb-3">
+  <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search value.." aria-label="Recipient's username" aria-describedby="button-addon2">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+</div>
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Color Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let color of colors | colorFilter:filterText">
+        <th scope="row">{{color.id}}</th>
+        <td>{{color.name}}</td>
+      </tr>
+    </tbody>
+  </table>

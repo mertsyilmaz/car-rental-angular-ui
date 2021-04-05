@@ -1,0 +1,41 @@
+<div class="card">
+    <div class="card-header">
+      Payment
+    </div>
+    <div class="card-body">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Full Name</label>
+              <input type="text" [(ngModel)]="fullName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Card Number</label>
+              <input type="password" [(ngModel)]="cardNumber" class="form-control" id="exampleInputPassword1">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Expiration</label>
+                    <input type="text" [(ngModel)]="expiration" class="form-control" id="inputEmail4">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputPassword4" class="form-label">CVV</label>
+                    <input type="text" [(ngModel)]="cvv" class="form-control" id="inputPassword4">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  </div>
+              </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" [(ngModel)]="isSave" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Save my card</label>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-md-6">
+                    <h4>Total Amount : {{totalAmount}}</h4>
+                  </div>
+                  <div class="col-md-6">
+                    <button type="submit" (click)="Payment()" class="btn btn-success">Pay</button>
+                  </div>
+            </div>
+    </div>
+  </div>
