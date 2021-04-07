@@ -1,3 +1,9 @@
+<div class="card">
+  <div class="card-header">
+    Brand List
+    <button routerLink="/brands/add" class="btn btn-sm btn-success float-end">Add New Brand</button>
+  </div>
+  <div class="card-body">
 <div class="input-group mb-3">
   <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search value.." aria-label="Recipient's username" aria-describedby="button-addon2">
   <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
@@ -7,12 +13,20 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Brand Name</th>
+        <th scope="col">Settings</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let brand of brands | brandFilter:filterText">
         <th scope="row">{{brand.id}}</th>
         <td>{{brand.name}}</td>
+        <th scope="row">
+          <span routerLink="/brand/edit/{{brand.id}}" class="btn badge rounded-pill bg-warning text-dark me-2">Edit</span>
+          <span routerLink="/brand/{{brand.id}}" class="btn badge rounded-pill bg-info text-dark">Detail</span>
+          <span class="btn badge rounded-pill bg-danger text-dark" (click)="deleteBrand(brand)">Delete</span>
+        </th>
       </tr>
     </tbody>
   </table>
+  </div>
+</div>

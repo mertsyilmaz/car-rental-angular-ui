@@ -1,0 +1,45 @@
+<style>
+    .my-drop-zone { border: dotted 3px lightgray; }
+    .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+    .another-file-over-class { border: dotted 3px green; }
+ 
+    html, body { height: 100%; }
+</style>
+ 
+<div class="card"> 
+    <div class="card-header">
+        Manage Photos
+    </div>
+    <div class="mb-3 p-3">
+            <h3>Select files</h3>
+            <input type="file" class="form-control form-control-lg" (change)="fileUploaderChange($event)" multiple  /><br/>
+        </div>
+ 
+        <div class="mb-3 p-2">
+            <table class="table" ([ngModel])="photos">
+                <thead>
+                    <tr >
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let photo of photos">
+                        <td>{{photo.url}}</td>
+                    </tr>
+                </tbody>
+            </table>
+ 
+            <div>
+                <button type="button" (click)="uploadAll()" class="btn btn-success btn-s">
+                    <span class="glyphicon glyphicon-upload"></span> Upload all
+                </button>
+                <button type="button" class="btn btn-warning btn-s">
+                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                </button>
+                <button type="button" class="btn btn-danger btn-s">
+                    <span class="glyphicon glyphicon-trash"></span> Remove all
+                </button>
+            </div>
+ 
+        </div>
+</div>

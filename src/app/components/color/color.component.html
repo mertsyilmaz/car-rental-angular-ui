@@ -1,3 +1,10 @@
+<div class="card">
+  <div class="card-header">
+    Color List
+    <button routerLink="/colors/add" class="btn btn-sm btn-success float-end">Add New Color</button>
+  </div>
+  <div class="card-body">
+
 <div class="input-group mb-3">
   <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search value.." aria-label="Recipient's username" aria-describedby="button-addon2">
   <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
@@ -7,12 +14,20 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Color Name</th>
+        <th scope="col">Settings</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let color of colors | colorFilter:filterText">
         <th scope="row">{{color.id}}</th>
         <td>{{color.name}}</td>
+        <th scope="row">
+          <span routerLink="/color/edit/{{color.id}}" class="btn badge rounded-pill bg-warning text-dark me-2">Edit</span>
+          <span routerLink="/color/{{color.id}}" class="btn badge rounded-pill bg-info text-dark">Detail</span>
+          <span class="btn badge rounded-pill bg-danger text-dark" (click)="deleteColor(color)">Delete</span>
+        </th>
       </tr>
     </tbody>
   </table>
+  </div>
+</div>

@@ -15,4 +15,8 @@ export class PhotoService {
   getPhotoByCarId(carId:number):Observable<ListResponseModel<Photo>>{
     return this.http.get<ListResponseModel<Photo>>(this.url + "getphotosbycarid?carId="+carId); 
   }
+
+  addPhotoForCar(photos:Photo[]){
+
+  }
 }

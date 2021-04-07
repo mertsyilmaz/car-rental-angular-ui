@@ -1,0 +1,80 @@
+<div class="card">
+    <div class="card-header">
+      Edit Car
+      <button routerLink="/car/photo/{{carId}}" class="btn btn-sm btn-info float-end">Manage Photos</button>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="carEditForm"> 
+            <div class="mb-3">
+                <label for="name" class="form-label">Car Name</label>
+                <input type="text" 
+                formControlName="name"
+                placeholder="Color name"
+                class="form-control" 
+                id="name" 
+                aria-describedby="nameHelp">
+                <div id="nameHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="row">
+                  <div class="mb-3 col-6">
+                      <label for="brandId" class="form-label">Brand</label>
+                      <select class="form-select" 
+                      aria-describedby="brandIdHelp"
+                      id="brandId"
+                      aria-label="Default select example" 
+                      formControlName="brandId">
+                          <option value="" disabled>Select brand</option>
+                          <option *ngFor="let brand of brands" [value]="brand.id" >{{brand.name}}</option>
+                        </select>
+                      <div id="brandIdHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3 col-6">
+                      <label for="colorId" class="form-label">Color</label>
+                      <select class="form-select"
+                      id="colorId" 
+                      aria-describedby="colorIdHelp"
+                      aria-label="Default select example" 
+                      formControlName="colorId">
+                          <option value="" disabled>Select color</option>
+                          <option *ngFor="let color of colors" [value]="color.id" >{{color.name}}</option>
+                        </select>
+                      <div id="colorIdHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+              </div>
+              <div class="row">
+                  <div class="mb-3 col-6">
+                      <label for="modelYear" class="form-label">Model Year</label>
+                      <input type="text" 
+                      formControlName="modelYear"
+                      placeholder="Model Year"
+                      class="form-control" 
+                      id="modelYear" 
+                      aria-describedby="modelYearHelp">
+                      <div id="modelYearHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3 col-6">
+                      <label for="dailyPrice" class="form-label">Daily Price</label>
+                      <input type="text" 
+                      formControlName="dailyPrice"
+                      placeholder="Daily Price"
+                      class="form-control" 
+                      id="dailyPrice" 
+                      aria-describedby="dailyPriceHelp">
+                      <div id="dailyPriceHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+              </div>
+                
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description</label>
+                  <input type="text" 
+                  formControlName="description"
+                  placeholder="Description"
+                  class="form-control" 
+                  id="description" 
+                  aria-describedby="descriptionHelp">
+                  <div id="descriptionHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+            <button type="submit" class="btn btn-primary" (click)="editCar()">Submit</button>
+          </form>
+    </div>
+  </div>

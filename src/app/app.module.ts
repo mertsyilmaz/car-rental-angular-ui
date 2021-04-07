@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -21,6 +21,17 @@ import { RentCarComponent } from './components/rent-car/rent-car.component';
 
 import {ToastrModule} from 'ngx-toastr';
 import { PaymentComponent } from './components/payment/payment.component';
+import { AddBrandComponent } from './components/brand/add-brand/add-brand.component';
+import { AddColorComponent } from './components/color/add-color/add-color.component';
+import { AddCarComponent } from './components/car/add-car/add-car.component';
+import { DetailBrandComponent } from './components/brand/detail-brand/detail-brand.component';
+import { EditBrandComponent } from './components/brand/edit-brand/edit-brand.component';
+import { EditColorComponent } from './components/color/edit-color/edit-color.component';
+import { DetailColorComponent } from './components/color/detail-color/detail-color.component';
+import { DetailCarComponent } from './components/car/detail-car/detail-car.component';
+import { EditCarComponent } from './components/car/edit-car/edit-car.component';
+import { ManagePhotoComponent } from './components/car/manage-photo/manage-photo.component';
+import {FileUploadModule} from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -37,13 +48,25 @@ import { PaymentComponent } from './components/payment/payment.component';
     ColorFilterPipe,
     SidebarComponent,
     RentCarComponent,
-    PaymentComponent
+    PaymentComponent,
+    AddBrandComponent,
+    AddColorComponent,
+    AddCarComponent,
+    DetailBrandComponent,
+    EditBrandComponent,
+    EditColorComponent,
+    DetailColorComponent,
+    DetailCarComponent,
+    EditCarComponent,
+    ManagePhotoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
+    FileUploadModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     }),

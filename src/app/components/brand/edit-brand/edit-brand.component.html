@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="card-header">
+      Edit Brand
+    </div>
+    <div class="card-body">
+        <form [formGroup]="brandEditForm"> 
+            <div class="mb-3">
+              <label for="name" class="form-label">Brand Name</label>
+              <input type="text" 
+              formControlName="name"
+              placeholder="Brand name"
+              class="form-control" 
+              id="name" 
+              aria-describedby="nameHelp">
+              <div id="nameHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="editBrand()">Submit</button>
+          </form>
+    </div>
+  </div>

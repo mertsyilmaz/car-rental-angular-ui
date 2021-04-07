@@ -1,42 +1,58 @@
-<div class="input-group mb-3">
-  <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search value.." aria-label="Recipient's username" aria-describedby="button-addon2">
-  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-</div>
-<div class="row">
-  <div class="col-4">
-    <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedBrand">
-      <option value="" >All brand</option>
-      <option *ngFor="let brand of brands" [value]="brand.id" >{{brand.name}}</option>
-    </select>
+<div class="card">
+  <div class="card-header">
+    Car List
+    <button routerLink="/cars/add" class="btn btn-sm btn-success float-end">Add New Car</button>
   </div>
-  <div class="col-4">
-    <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedColor">
-      <option value="" >All color</option>
-      <option *ngFor="let color of colors" [value]="color.id" >{{color.name}}</option>
-    </select>
-  </div>
-  <div class="col-4">
-    <button class="btn btn-primary right" (click)="getCarsByFilter()">filter</button>
+  <div class="card-body">
+    <div class="input-group mb-3">
+      <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search value.." aria-label="Recipient's username" aria-describedby="button-addon2">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+    </div>
+    <div class="row mb-3">
+      <div class="col-5">
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedBrand">
+          <option value="" >All brand</option>
+          <option *ngFor="let brand of brands" [value]="brand.id" >{{brand.name}}</option>
+        </select>
+      </div>
+      <div class="col-5">
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedColor">
+          <option value="" >All color</option>
+          <option *ngFor="let color of colors" [value]="color.id" >{{color.name}}</option>
+        </select>
+      </div>
+      <div class="col-2 d-grid gap-2">
+        <button class="btn btn-primary " (click)="getCarsByFilter()">Filter</button>
+      </div>
+    </div>
+    
+    <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Car Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Color</th>
+            <th scope="col">Daily Price</th>
+            <th scope="col">Settings</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let carDetail of carsDetail | carFilter:filterText">
+            <th scope="row">{{carDetail.carId}}</th>
+            <td>{{carDetail.carName}}</td>
+            <td>{{carDetail.brandName}}</td>
+            <td>{{carDetail.colorName}}</td>
+            <td>{{carDetail.dailyPrice}}</td>
+            <th scope="row">
+              <span routerLink="/car/edit/{{carDetail.carId}}" class="btn badge rounded-pill bg-warning text-dark me-2">Edit</span>
+              <span routerLink="/car/{{carDetail.carId}}" class="btn badge rounded-pill bg-info text-dark">Detail</span>
+              <span class="btn badge rounded-pill bg-danger text-dark" (click)="deleteCar(carDetail.carId)">Delete</span>
+            </th>
+          </tr>
+        </tbody>
+      </table>
   </div>
 </div>
 
-<table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Car Name</th>
-        <th scope="col">Brand</th>
-        <th scope="col">Color</th>
-        <th scope="col">Daily Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr routerLink="/car/{{carDetail.carId}}" *ngFor="let carDetail of carsDetail | carFilter:filterText">
-        <th scope="row">{{carDetail.carId}}</th>
-        <td>{{carDetail.carName}}</td>
-        <td>{{carDetail.brandName}}</td>
-        <td>{{carDetail.colorName}}</td>
-        <td>{{carDetail.dailyPrice}}</td>
-      </tr>
-    </tbody>
-  </table>
+

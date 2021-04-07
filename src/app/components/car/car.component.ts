@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
 import { CarDetail } from 'src/app/models/carDetail';
@@ -25,7 +26,8 @@ export class CarComponent implements OnInit {
     private carService: CarService,
     private activetedRoute: ActivatedRoute,
     private colorService: ColorService,
-    private brandService: BrandService
+    private brandService: BrandService,
+    private toastr:ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -82,6 +84,19 @@ export class CarComponent implements OnInit {
     this.carService.getCarDetailByFilter(this.selectedColor,this.selectedBrand).subscribe(response => {
       this.carsDetail = response.data;
     })
+
+  }
+
+  deleteCar(carId:number){
+    this.carService.getById(carId).subscribe(response => {
+      this.carService.delete(response.data).subscribe(response => {
+        if(response.success){
+          this.toastr.success(response.message,'', {timeOut: 1000})
+           .onHidden
+           .subscribe(() => this.getCarsDetail());
+        }
+      });
+    });
 
   }
 
